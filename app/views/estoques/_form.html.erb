@@ -1,0 +1,56 @@
+<%= form_with(model: estoque, local: true) do |form| %>
+  <% if estoque.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(estoque.errors.count, "error") %> prohibited this estoque from being saved:</h2>
+
+      <ul>
+        <% estoque.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="col-sm-4">
+    <%= form.label :nome %>
+    <%= form.text_field :nome %>
+  </div>
+
+  <div class="col-sm-4">
+    <%= form.label :data_criacao %>
+    <%= form.text_field :data_criacao %>
+  </div>
+  
+  
+  <div class="row form-group">
+    <div class="col-sm-4">
+      <%= form.label :produto_id %>
+      <%= form.select :produto_id, @produtos, {include: true}, class: "form-control"%>
+    </div>
+
+  <div class="col-sm-4">
+      <%= form.label :categoria %>
+      <%= select('produto', :categoria, ['Bovino', 'Suino', 'caprino', 'Aves', 'Peixe'],{include:true}, {:class => 'form-control'}) %>
+    </div>
+  </div>
+
+  <div class="col-sm-4">
+      <%= form.label :valor_total %>
+      <%= form.text_field :valor_total, :placeholder => "Por Kg.", class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="col-sm-4">
+    <%= form.label :peso %>
+    <%= form.number_field :peso %>
+  </div>
+
+  <div class="col-sm-4">
+    <%= form.label :data_validade %>
+    <%= form.text_field :data_validade %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

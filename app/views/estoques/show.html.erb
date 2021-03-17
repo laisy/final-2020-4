@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nome:</strong>
+  <%= @estoque.nome %>
+</p>
+
+<p>
+  <strong>Data criacao:</strong>
+  <%= @estoque.data_criacao %>
+</p>
+
+<p>
+  <strong>Produtos:</strong>
+  <%= @estoque.produtos_id %>
+</p>
+
+<p>
+  <strong>Categoria:</strong>
+  <%= @estoque.categoria %>
+</p>
+
+<p>
+  <strong>Valor total:</strong>
+  <%= @estoque.valor_total %>
+</p>
+
+<p>
+  <strong>Peso:</strong>
+  <%= @estoque.peso %>
+</p>
+
+<p>
+  <strong>Data validade:</strong>
+  <%= @estoque.data_validade %>
+</p>
+
+<%= link_to 'Edit', edit_estoque_path(@estoque) %> |
+<%= link_to 'Back', estoques_path %>

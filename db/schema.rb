@@ -10,10 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_14_152510) do
-
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+ActiveRecord::Schema.define(version: 2021_03_17_012202) do
 
   create_table "caixas", force: :cascade do |t|
     t.date "data"
@@ -21,15 +18,28 @@ ActiveRecord::Schema.define(version: 2020_10_14_152510) do
     t.float "valor_total"
     t.float "valor_arrecadado"
     t.boolean "aberto"
-    t.bigint "usuario_id", null: false
+    t.integer "usuario_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["usuario_id"], name: "index_caixas_on_usuario_id"
   end
 
+  create_table "estoques", force: :cascade do |t|
+    t.string "nome"
+    t.string "data_criacao"
+    t.integer "produtos_id", null: false
+    t.string "categoria"
+    t.float "valor_total"
+    t.integer "peso"
+    t.string "data_validade"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["produtos_id"], name: "index_estoques_on_produtos_id"
+  end
+
   create_table "produto_vendas", force: :cascade do |t|
-    t.bigint "produto_id", null: false
-    t.bigint "venda_id", null: false
+    t.integer "produto_id", null: false
+    t.integer "venda_id", null: false
     t.float "qtd_produtos"
     t.float "valor"
     t.datetime "created_at", precision: 6, null: false
@@ -62,6 +72,7 @@ ActiveRecord::Schema.define(version: 2020_10_14_152510) do
   end
 
   add_foreign_key "caixas", "usuarios"
+  add_foreign_key "estoques", "produtos", column: "produtos_id"
   add_foreign_key "produto_vendas", "produtos"
   add_foreign_key "produto_vendas", "vendas"
 end

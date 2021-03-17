@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nome: MyString
+  data_criacao: MyString
+  produtos: one
+  categoria: MyString
+  valor_total: 1.5
+  peso: 1
+  data_validade: MyString
+
+two:
+  nome: MyString
+  data_criacao: MyString
+  produtos: two
+  categoria: MyString
+  valor_total: 1.5
+  peso: 1
+  data_validade: MyString

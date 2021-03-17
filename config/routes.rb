@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :estoques 
   resources :usuarios do 
     member do 
       get   'caixa/abrir'
